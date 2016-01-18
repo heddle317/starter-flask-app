@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="static/css/style.css" rel="stylesheet">
-
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <script src="static/js/script.js"></script>
-        <title></title>
+        {% assets "base_css" %}
+            <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+        {% endassets %}
+        {% block head%}{% endblock %}
     </head>
     <body id="wrap">
         <div class='container-fluid'>
             {% block content %}
             {% endblock %}
         </div>
+        <script type="text/javascript">
+            var csrftoken = '{{ csrf_token() }}';
+            var imagesBase = '{{images_base }}';
+            var staticBase = '{{static_base }}';
+        </script>
+        {% assets "base_js" %}
+            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+        {% block script %}
+        {% endblock %}
     </body>
 </html>
