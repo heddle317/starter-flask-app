@@ -13,8 +13,6 @@
         </div>
         <script type="text/javascript">
             var csrftoken = '{{ csrf_token() }}';
-            var imagesBase = '{{images_base }}';
-            var staticBase = '{{static_base }}';
         </script>
         {% assets "base_js" %}
             <script type="text/javascript" src="{{ ASSET_URL }}"></script>

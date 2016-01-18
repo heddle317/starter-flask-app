@@ -7,7 +7,6 @@ from app import config
 from flask import Flask
 from flask import g
 from flask import render_template as render_template_view
-from flask import request
 
 from flask.ext.compress import Compress
 from flask.ext.login import current_user
@@ -68,8 +67,6 @@ def page_not_found(e):
 
 
 def render_template(template_name, **kwargs):
-    kwargs['static_base'] = config.STATIC_BASE
-    kwargs['images_base'] = config.IMAGES_BASE
     kwargs['app_base_link'] = config.APP_BASE_LINK
     kwargs['current_user'] = current_user
     return render_template_view(template_name, **kwargs)
